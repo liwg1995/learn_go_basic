@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-//寻找最长不含有重复字符的字串
+//寻找最长不含有重复字符的子串
 
 //比如：abcabcbb  -->  adc   ;   aaaaa --> a;    pwwkew  -->  wke
 //分析：
@@ -30,21 +30,33 @@ func lengthOfNonRepeatingSubStr(s string) int {
 	return maxlenth
 
 }
+
+
+func lengthOfNonRepeatingSubStrZh(s string) int {
+	lastOccurred :=make(map[rune]int)
+	start := 0
+	maxlenth := 0
+	for i,ch := range []rune(s) {
+		if lastI,ok := lastOccurred[ch]; ok && lastI >= start {
+			start = lastI + 1
+		}
+		if i - start + 1 > maxlenth {
+			maxlenth = i - start + 1
+		}
+		lastOccurred[ch]  = i
+
+	}
+	return maxlenth
+
+}
+
 func main() {
-	fmt.Println(lengthOfNonRepeatingSubStr("abcabcbb"))
-	fmt.Println(lengthOfNonRepeatingSubStr("aaaaa"))
-	fmt.Println(lengthOfNonRepeatingSubStr("pwwkew"))
-	fmt.Println(lengthOfNonRepeatingSubStr(""))
-	fmt.Println(lengthOfNonRepeatingSubStr("b"))
-	fmt.Println(lengthOfNonRepeatingSubStr("abcdef"))
-	fmt.Println(lengthOfNonRepeatingSubStr("这里是禹都一只猫"))
-	fmt.Println(lengthOfNonRepeatingSubStr("一二三二一"))
-	//3
-	//1
-	//3
-	//0
-	//1
-	//6
-	//17
-	//5      因为做了byte的转换s，所以这些ASII码就不行了，所以中文现实的是这些，，
+	fmt.Println(lengthOfNonRepeatingSubStr("abcabcbb")) //3
+	fmt.Println(lengthOfNonRepeatingSubStr("aaaaa"))  //1
+	fmt.Println(lengthOfNonRepeatingSubStr("pwwkew"))  //3
+	fmt.Println(lengthOfNonRepeatingSubStr(""))  //0
+	fmt.Println(lengthOfNonRepeatingSubStr("b"))  //1
+	fmt.Println(lengthOfNonRepeatingSubStr("abcdef")) //6
+	fmt.Println(lengthOfNonRepeatingSubStrZh("这里是禹都一只猫")) //8
+	fmt.Println(lengthOfNonRepeatingSubStrZh("一二三二一")) //3
 }
