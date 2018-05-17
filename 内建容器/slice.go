@@ -38,10 +38,10 @@ func main() {
 	//[100 1 100 3 4 5 6 7]
 	//[100 1 100 3 4 5 6 7]
 
-	fmt.Println("After updateSlice(s2)")
-	updateSlice(s2)
-	fmt.Println(s2)
-	fmt.Println(arr)
+	//fmt.Println("After updateSlice(s2)")
+	//updateSlice(s2)
+	//fmt.Println(s2)
+	//fmt.Println(arr)
 
 	fmt.Println("Reslice")
 	fmt.Println(s2)

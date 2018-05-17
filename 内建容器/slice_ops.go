@@ -20,6 +20,7 @@ func main() {
 
 	s1 := []int{2,4,6,8}
 	printSlice(s1) //len=4, cap=4
+	//fmt.Println(s1)
 
 	//构建一个长度为16的slice
 	s2 := make([]int,16)
@@ -30,6 +31,8 @@ func main() {
 
 	fmt.Println("Copying Slice")
 	//拷贝切片，把s1的内容拷贝到s2中了，要注意，s2的cap还是16
+	fmt.Println(s1)
+	fmt.Println(s2)
 	copy(s2,s1)
 	printSlice(s2)  //[2 4 6 8 0 0 0 0 0 0 0 0 0 0 0 0]
 
@@ -42,7 +45,7 @@ func main() {
 	fmt.Println("Poping from front")
 	//删除头部元素
 	front := s2[0]
-	//fmt.Println(front)
+	fmt.Println(front)
 	s2 = s2[1:]
 	fmt.Println(s2)
 
