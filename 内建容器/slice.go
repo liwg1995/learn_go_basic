@@ -57,7 +57,7 @@ func main() {
 	//[100 3 4]
 
 	//slice拓展
-	 fmt.Println("Extending slice")
+	fmt.Println("Extending slice")
 	arry := [...]int{0,1,2,3,4,5,6,7}
 	fmt.Println(arry)
 	t1 := arry[2:6]
