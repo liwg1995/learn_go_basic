@@ -28,15 +28,15 @@ func (node *Node) SetValue(value int) {
 
 	node.Value = value
 }
-
-func (node *Node) Traverse()  {
-	if node == nil {
-		return
-	}
-	node.Left.Traverse()
-	node.Print()
-	node.Right.Traverse()
-}
+//
+//func (node *Node) Traverse()  {
+//	if node == nil {
+//		return
+//	}
+//	node.Left.Traverse()
+//	node.Print()
+//	node.Right.Traverse()
+//}
 
 func CreateNode(value int) *Node { // 使用自定义工厂函数
 	return &Node{Value: value} //返回了 局部变量的地址,不需要知道分配在栈上还是堆上，编译器自动分配
