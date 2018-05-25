@@ -6,12 +6,12 @@ import "fmt"
 //go语言只支持封装，不支持继承和多态
 //go语言没有class，只有struct
 
-type TreeNode struct {
+type Node struct {
 	Value       int
-	Left, Right *TreeNode
+	Left, Right *Node
 }
 
-func (node TreeNode) Print() { //为treeNode结构定义方法，在函数名前面加一个(node treeNode)表示的是接收者，print是给node来接收的
+func (node Node) Print() { //为treeNode结构定义方法，在函数名前面加一个(node treeNode)表示的是接收者，print是给node来接收的
 	fmt.Println(node.Value)
 }
 
@@ -20,7 +20,7 @@ func (node TreeNode) Print() { //为treeNode结构定义方法，在函数名前
 *
 */
 
-func (node *TreeNode) SetValue(value int) {
+func (node *Node) SetValue(value int) {
 	if node == nil {
 		fmt.Println("Setting Value to nil" + "node. Ignored")
 		return
@@ -29,7 +29,7 @@ func (node *TreeNode) SetValue(value int) {
 	node.Value = value
 }
 
-func (node *TreeNode) Traverse()  {
+func (node *Node) Traverse()  {
 	if node == nil {
 		return
 	}
@@ -38,8 +38,8 @@ func (node *TreeNode) Traverse()  {
 	node.Right.Traverse()
 }
 
-func CreateNode(value int) *TreeNode { // 使用自定义工厂函数
-	return &TreeNode{Value: value} //返回了 局部变量的地址,不需要知道分配在栈上还是堆上，编译器自动分配
+func CreateNode(value int) *Node { // 使用自定义工厂函数
+	return &Node{Value: value} //返回了 局部变量的地址,不需要知道分配在栈上还是堆上，编译器自动分配
 }
 
 //func main() {
