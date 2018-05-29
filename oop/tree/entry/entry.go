@@ -1,6 +1,24 @@
 package main
 
-import "learn_go_basic/oop/tree"
+import (
+	"learn_go_basic/oop/tree"
+	"fmt"
+)
+
+type myTreeNode struct {
+	node *tree.Node
+}
+
+func (myNode *myTreeNode) postOrder()  {
+	if myNode == nil || myNode == nil {
+		return
+	}
+	left := myTreeNode{myNode.node.Left}
+	right := myTreeNode{myNode.node.Right}
+	left.postOrder()
+	right.postOrder()
+	myNode.node.Print()
+}
 
 func main() {
 	var root tree.Node
@@ -13,4 +31,8 @@ func main() {
 	root.Right.Left.SetValue(4)
 
 	root.Traverse()
+	fmt.Println()
+	myRoot := myTreeNode{&root}
+	myRoot.postOrder()
+	fmt.Println()
 }
